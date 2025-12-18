@@ -43,7 +43,7 @@ let points = 12
 
 print("Hi, my name is \(name).")
 print("I love \(favouriteFood).")
-print("I have \(points) points!")#
+print("I have \(points) points!")
 
 //Mini game
 var score = 0
