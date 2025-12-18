@@ -2,7 +2,7 @@
 
 A beginner-friendly Swift programming course designed to teach fundamental programming concepts and iOS app development using Swift and SwiftUI.
 
-## 📚 Course Structure
+## Course Structure
 
 This repository contains 4 progressive lessons plus a practical project:
 
@@ -37,7 +37,7 @@ This repository contains 4 progressive lessons plus a practical project:
 - Interactive elements with `@State`
 - Building user interfaces
 
-### 🎵 Soundboard Project
+### Soundboard Project
 A complete SwiftUI iOS app that demonstrates:
 - SwiftUI app structure
 - Audio playback with AVFoundation
@@ -46,7 +46,7 @@ A complete SwiftUI iOS app that demonstrates:
 - Resource management
 - Interactive buttons
 
-## 🚀 Getting Started
+## Getting Started
 
 ### Prerequisites
 - macOS computer
@@ -76,7 +76,7 @@ For the soundboard app, you'll need to add audio files to your project:
 - Required files: `dog.mp3`, `cat.mp3`, `lion.mp3`, `car.mp3`, `firetruck.mp3`, `elephant.mp3`, `piano.mp3`, `drums.mp3`, `pizza.mp3`
 - Add these files to your Xcode project's Resources folder
 
-## 🎯 Learning Path
+## Learning Path
 
 Follow the lessons in order:
 1. Start with `lesson1.swift` to learn Swift basics
@@ -85,7 +85,7 @@ Follow the lessons in order:
 4. Learn SwiftUI fundamentals in `lesson4.swift`
 5. Build the complete Soundboard app to apply everything you've learned
 
-## 💡 Tips for Success
+## Tips for Success
 
 - Type out the code yourself rather than copying - this builds muscle memory
 - Experiment by changing values and seeing what happens
@@ -93,18 +93,18 @@ Follow the lessons in order:
 - Don't worry about making mistakes - that's how we learn!
 - Add comments to explain your understanding
 
-## 🎓 What You'll Learn
+## What You'll Learn
 
 By completing these lessons, you'll be able to:
-- ✅ Write Swift code with proper syntax
-- ✅ Understand and use variables, constants, and data types
-- ✅ Create conditional logic and loops
-- ✅ Work with arrays and functions
-- ✅ Build interactive iOS apps with SwiftUI
-- ✅ Handle user input and state management
-- ✅ Play audio in iOS applications
+-  Write Swift code with proper syntax
+-  Understand and use variables, constants, and data types
+-  Create conditional logic and loops
+-  Work with arrays and functions
+-  Build interactive iOS apps with SwiftUI
+-  Handle user input and state management
+-  Play audio in iOS applications
 
-## 📝 Notes
+## Notes
 
 Each lesson includes:
 - Clear comments explaining concepts
@@ -112,7 +112,7 @@ Each lesson includes:
 - Real-world scenarios
 - Emojis for visual engagement 🎉
 
-## 🤝 Contributing
+## Contributing
 
 Feel free to:
 - Report issues
@@ -120,7 +120,7 @@ Feel free to:
 - Share your learning journey
 - Add more examples or exercises
 
-## 📄 License
+## License
 
 This educational content is provided as-is for learning purposes.
 
