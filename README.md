@@ -1,4 +1,4 @@
-# Swift Lessons 🍎
+# Swift Lessons
 
 A beginner-friendly Swift programming course designed to teach fundamental programming concepts and iOS app development using Swift and SwiftUI.
 
@@ -110,7 +110,7 @@ Each lesson includes:
 - Clear comments explaining concepts
 - Practical examples
 - Real-world scenarios
-- Emojis for visual engagement 🎉
+- Emojis for visual engagement 
 
 ## Contributing
 
@@ -126,4 +126,4 @@ This educational content is provided as-is for learning purposes.
 
 ---
 
-Happy coding! Keep practicing and building amazing things with Swift! 🚀
+Happy coding! Keep practicing and building amazing things with Swift! 
