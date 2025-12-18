@@ -138,7 +138,7 @@ struct ContentView: View {
         Sound(emoji: "🍕", name: "Pizza")
     ]
 
-    @State private var lastTapped = "Tap an emoji!"
+    @State private var lastTapped = "Tap an emoji!"     //This text changes whenever you press a button.
 
     var body: some View {
         VStack(spacing: 16) {
@@ -149,13 +149,13 @@ struct ContentView: View {
             Text(lastTapped)
                 .font(.title2)
 
-            LazyVGrid(columns: columns, spacing: 12) {
-                ForEach(sounds) { sound in
-                    Button {
-                        lastTapped = "You tapped: \(sound.name) \(sound.emoji)"
+            LazyVGrid(columns: columns, spacing: 12) {      //A grid layout that’s efficient (loads items as needed).
+                ForEach(sounds) { sound in                  //Loop over each sound in the sounds array
+                    Button {                                // Create a button for each sound in the array
+                        lastTapped = "You tapped: \(sound.name) \(sound.emoji)"     //Update lastTapped text
                         // Later: play sound here
                     } label: {
-                        Text(sound.emoji)
+                        Text(sound.emoji)                   //Make buttons look like tiles
                             .font(.system(size: 56))
                             .frame(maxWidth: .infinity, minHeight: 90)
                             .background(Color(.systemGray6))
@@ -174,19 +174,24 @@ struct ContentView: View {
     }
 }
 
-//Part D (Optional “Level Up”): Add real audio (AVFoundation)
+
+//Result: A working emoji grid where tapping updates “last tapped” text — but still no audio.
+
+
+//Part D (“Level Up”): Add real audio (AVFoundation)
 
 //Adding audio files into the Playgrounds Resources folder (e.g. dog.wav, cat.wav), this will play them.
 
 //Add this SoundPlayer helper
+import SwiftUI
 import AVFoundation
 
 final class SoundPlayer {
     static let shared = SoundPlayer()
-    private var player: AVAudioPlayer?
+    private var player: AVAudioPlayer?  //holds the audio player
 
-    func play(fileName: String, fileExtension: String) {
-        guard let url = Bundle.main.url(forResource: fileName, withExtension: fileExtension) else {
+    func play(fileName: String, fileExtension: String) {        //A function that plays a sound file like "dog.wav".
+        guard let url = Bundle.main.url(forResource: fileName, withExtension: fileExtension) else {  //find the file in app bundle. If it can’t find it, it prints an error.
             print("Missing file: \(fileName).\(fileExtension)")
             return
         }
@@ -221,7 +226,7 @@ private let sounds: [Sound] = [
 
 Button {
     lastTapped = "You tapped: \(sound.name) \(sound.emoji)"
-    SoundPlayer.shared.play(fileName: sound.file, fileExtension: "wav")
+    SoundPlayer.shared.play(fileName: sound.file, fileExtension: "mp3")
 } label: {
     Text(sound.emoji)
         .font(.system(size: 56))
@@ -229,3 +234,5 @@ Button {
         .background(Color(.systemGray6))
         .cornerRadius(16)
 }
+
+//Result: Tap 🐶 → plays dog.wav, tap 🚗 → plays car.wav, etc.
