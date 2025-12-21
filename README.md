@@ -6,7 +6,11 @@ A beginner-friendly Swift programming course designed to teach fundamental progr
 
 Watch the course in action:
 
-[![Demo Video](https://github.com/svedaliabbas1/swift-lessons/raw/main/Demo-video.mp4)](https://github.com/svedaliabbas1/swift-lessons/raw/main/Demo-video.mp4)
+https://github.com/user-attachments/assets/ad49dd22-5e13-4911-9fe3-3f2ed5dfb9ed
+
+
+
+
 
 ## Course Structure
 
