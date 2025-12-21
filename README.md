@@ -2,6 +2,12 @@
 
 A beginner-friendly Swift programming course designed to teach fundamental programming concepts and iOS app development using Swift and SwiftUI.
 
+## Demo
+
+Watch the course in action:
+
+<video src="Demo-video.mp4" width="100%" controls></video>
+
 ## Course Structure
 
 This repository contains 4 progressive lessons plus a practical project:
