@@ -1,238 +1,180 @@
-//Part A — SwiftUI basics
-//Your first SwiftUI screen
+// LESSON 4 — Capstone Project (Arrays + ForEach + Real Audio)
+// Learn: Arrays, ForEach, LazyVGrid, and AVAudioPlayer
+// Goal: Build a complete, working soundboard with NO repetition!
 
-//This brings in SwiftUI, Apple’s toolkit for making app screens.
-import SwiftUI
-
-//We’re creating a “screen” called ContentView.
-//: View means: “This is something SwiftUI can show on the screen.”
-//Every SwiftUI view must describe what it looks like in body.
-//some View means: “I will return a SwiftUI view (something visual).”
-struct ContentView: View {
-    var body: some View {
-        Text("Hello, SwiftUI! 👋")  //show text on screen 
-            .font(.largeTitle)      //make the font big
-            .padding()              //add space around the text
-    }
-}
-
-//Result: A simple screen with a big “Hello” message.
-
-//Stacks (VStack / HStack) to lay things out
-//VStack stacks things vertically (top to bottom).
-//spacing: 16 means there will be 16 points of space between items.
-import SwiftUI
-
-struct ContentView: View {
-    var body: some View {
-        VStack(spacing: 16) {
-            Text("My App")          //Title
-                .font(.largeTitle)  //big font
-
-            HStack(spacing: 12) {    //HStack stacks things horizontally (left to right)
-                Text("🐶")          //Object 1
-                Text("🍕")          //Object 2
-                Text("⚽️")          //Object 3
-            }
-            .font(.system(size: 48))    //make emojis big
-        }
-        .padding()        //add space around the whole VStack   
-    }
-}
-
-//Result: Title on top, emojis in a row underneath.
-
-
-//Part B — Interactivity with @State
-//@State (a value that can change on the screen)
-
-//score starts at 0.
-
-//@State is the magic that says: “If this value changes, update the screen automatically.”
-
-//Without @State, the screen wouldn’t refresh when score changes.
-import SwiftUI
-
-struct ContentView: View {
-    @State private var score = 0    // starts at 0
-
-    var body: some View {           
-        VStack(spacing: 16) {       //stack items vertically
-            Text("Score: \(score)") //show current score
-                .font(.largeTitle)  //big font
-
-            Button("Add 1 ⭐️") {    //button to add 1 to score
-                score += 1          // increase score by 1
-            }
-            .font(.title2)         //make button text bigger
-        }
-        .padding()                 //add space around the whole VStack
-    }
-}
-
-//Result: Tap the button → score goes up on screen.
-
-//“Reset” button + simple rules
-import SwiftUI
-
-struct ContentView: View {
-    @State private var score = 0                        // starts at 0
-    @State private var message = "Tap to start!"        // initial message
-
-    var body: some View {
-        VStack(spacing: 16) {                           //stack items vertically
-            Text("Score: \(score)")                     //show current score
-                .font(.largeTitle)                      //big font
-
-            Text(message)
-                .font(.title2)                          //message under score
-
-            Button("Tap me") {                          //button to add 1 to score  
-                score += 1
-                if score == 5 {
-                    message = "Nice! 5 taps 🎉"         //Every tap increases score.
-                } else if score == 10 {                 //When score hits exactly 5, message changes.
-                    message = "Wow! 10 taps 🚀"        //When it hits exactly 10, message changes again.
-                }
-            }
-            .font(.title2)
-
-            Button("Reset") {
-                score = 0
-                message = "Tap to start!"
-            }
-        }
-        .padding()
-    }
-}
-
-//Result: A tiny game: tap → score increases → special messages at 5 and 10 → reset button.
-
-//Part C — Mini Project (Capstone): Emoji “Soundboard” Grid (tap an emoji)
-
-//This version teaches the grid UI + state + “last tapped”.
-
-//Emoji Grid Soundboard (no audio yet — perfect for class)
-import SwiftUI
-
-struct Sound: Identifiable {
-    let id = UUID()         // unique ID for each sound, UUID() makes a unique ID automatically, so SwiftUI can track each item.
-    let emoji: String       // emoji representing the sound
-    let name: String        // name of the emoji/sound
-}
-
-struct ContentView: View {
-    // 3 columns in the grid
-    private let columns = Array(repeating: GridItem(.flexible(), spacing: 12), count: 3)
-
-    // Our “soundboard buttons”
-    private let sounds: [Sound] = [
-        Sound(emoji: "🐶", name: "Dog"),
-        Sound(emoji: "🐱", name: "Cat"),
-        Sound(emoji: "🦁", name: "Lion"),
-        Sound(emoji: "🚗", name: "Car"),
-        Sound(emoji: "🚒", name: "Firetruck"),
-        Sound(emoji: "⚽️", name: "Football"),
-        Sound(emoji: "🎹", name: "Piano"),
-        Sound(emoji: "🥁", name: "Drums"),
-        Sound(emoji: "🍕", name: "Pizza")
-    ]
-
-    @State private var lastTapped = "Tap an emoji!"     //This text changes whenever you press a button.
-
-    var body: some View {
-        VStack(spacing: 16) {
-            Text("Emoji Soundboard")
-                .font(.largeTitle)
-                .bold()
-
-            Text(lastTapped)
-                .font(.title2)
-
-            LazyVGrid(columns: columns, spacing: 12) {      //A grid layout that’s efficient (loads items as needed).
-                ForEach(sounds) { sound in                  //Loop over each sound in the sounds array
-                    Button {                                // Create a button for each sound in the array
-                        lastTapped = "You tapped: \(sound.name) \(sound.emoji)"     //Update lastTapped text
-                        // Later: play sound here
-                    } label: {
-                        Text(sound.emoji)                   //Make buttons look like tiles
-                            .font(.system(size: 56))
-                            .frame(maxWidth: .infinity, minHeight: 90)
-                            .background(Color(.systemGray6))
-                            .cornerRadius(16)
-                    }
-                }
-            }
-            .padding(.top, 8)
-
-            Button("Clear") {
-                lastTapped = "Tap an emoji!"
-            }
-            .font(.title3)
-        }
-        .padding()
-    }
-}
-
-
-//Result: A working emoji grid where tapping updates “last tapped” text — but still no audio.
-
-
-//Part D (“Level Up”): Add real audio (AVFoundation)
-
-//Adding audio files into the Playgrounds Resources folder (e.g. dog.wav, cat.wav), this will play them.
-
-//Add this SoundPlayer helper
 import SwiftUI
 import AVFoundation
 
-final class SoundPlayer {
-    static let shared = SoundPlayer()
-    private var player: AVAudioPlayer?  //holds the audio player
+// ===== Part 1: Define the Sound Data =====
+// A Sound is a struct (a template) that holds all information about one sound.
+// Identifiable means SwiftUI can keep track of which sound is which.
 
-    func play(fileName: String, fileExtension: String) {        //A function that plays a sound file like "dog.wav".
-        guard let url = Bundle.main.url(forResource: fileName, withExtension: fileExtension) else {  //find the file in app bundle. If it can’t find it, it prints an error.
-            print("Missing file: \(fileName).\(fileExtension)")
+struct Sound: Identifiable {
+    let id = UUID()  // Unique identifier for this sound
+    let emoji: String
+    let name: String
+    let filename: String  // e.g., "dog" (without .mp3 extension)
+}
+
+// ===== Part 2: Create the App =====
+
+struct ContentView: View {
+    // ===== State for Interactivity =====
+    @State var nowPlaying = "—"
+    @State var audioPlayer: AVAudioPlayer?
+
+    // ===== The Sounds Array =====
+    // This array holds ALL the sounds in our soundboard.
+    // Instead of 9 separate variables, we have ONE array!
+    let sounds: [Sound] = [
+        Sound(emoji: "🐶", name: "Dog", filename: "dog"),
+        Sound(emoji: "🐱", name: "Cat", filename: "cat"),
+        Sound(emoji: "🦁", name: "Lion", filename: "lion"),
+        Sound(emoji: "🚗", name: "Car", filename: "car"),
+        Sound(emoji: "🚒", name: "Firetruck", filename: "firetruck"),
+        Sound(emoji: "🐘", name: "Elephant", filename: "elephant"),
+        Sound(emoji: "🎹", name: "Piano", filename: "piano"),
+        Sound(emoji: "🥁", name: "Drums", filename: "drums"),
+        Sound(emoji: "🍕", name: "Pizza", filename: "pizza"),
+    ]
+
+    // ===== Grid Configuration =====
+    // LazyVGrid creates a responsive grid layout.
+    // This creates 3 columns that adapt to the screen size.
+    let columns = Array(repeating: GridItem(.flexible(), spacing: 12), count: 3)
+
+    var body: some View {
+        VStack(spacing: 20) {
+            // ===== Title Section =====
+            VStack(spacing: 8) {
+                Text("🎵")
+                    .font(.system(size: 48))
+
+                Text("My Soundboard")
+                    .font(.largeTitle)
+                    .fontWeight(.bold)
+
+                Text("Tap the buttons to play sounds!")
+                    .font(.body)
+                    .foregroundColor(.gray)
+            }
+            .padding(.top, 20)
+
+            Spacer()
+
+            // ===== Soundboard Grid =====
+            // This is where the magic happens!
+            // ForEach generates a button for EACH sound in the array.
+            // No more copy-pasting code 9 times!
+
+            LazyVGrid(columns: columns, spacing: 12) {
+                // ForEach loops through each Sound in the sounds array
+                ForEach(sounds) { sound in
+                    // For each sound, create a Button
+                    Button(action: {
+                        // When tapped, update the display and play the sound
+                        nowPlaying = "\(sound.emoji) \(sound.name)"
+                        playSound(filename: sound.filename)
+                    }) {
+                        // The button shows the emoji
+                        Text(sound.emoji)
+                            .font(.system(size: 44))
+                            .frame(maxWidth: .infinity)
+                            .frame(height: 80)
+                            .background(Color(.systemGray5))
+                            .cornerRadius(12)
+                    }
+                }
+            }
+            .padding(.horizontal, 12)
+
+            // ===== Now Playing Display =====
+            VStack(spacing: 8) {
+                Text("Now Playing:")
+                    .font(.headline)
+                    .foregroundColor(.gray)
+
+                Text(nowPlaying)
+                    .font(.system(size: 24, weight: .bold))
+                    .foregroundColor(.blue)
+            }
+            .padding(.vertical, 16)
+            .frame(maxWidth: .infinity)
+            .background(Color(.systemGray6))
+            .cornerRadius(12)
+            .padding(.horizontal, 12)
+
+            Spacer()
+        }
+        .padding(16)
+        .background(Color(.systemBackground))
+        .ignoresSafeArea(edges: .bottom)
+    }
+
+    // ===== Audio Playback Function =====
+    // This function plays a sound file when called.
+    // We keep it in the View for this educational project.
+    // In real apps, you might move this to a separate class.
+
+    func playSound(filename: String) {
+        // Try to find the audio file in the app's resources
+        guard let url = Bundle.main.url(forResource: filename, withExtension: "mp3") else {
+            print("Sound file not found: \(filename).mp3")
             return
         }
 
         do {
-            player = try AVAudioPlayer(contentsOf: url)
-            player?.play()
+            // Create an AVAudioPlayer with the audio file
+            audioPlayer = try AVAudioPlayer(contentsOf: url)
+
+            // Prepare and play the sound
+            audioPlayer?.prepareToPlay()
+            audioPlayer?.play()
         } catch {
-            print("Could not play sound:", error)
+            print("Could not play sound: \(error.localizedDescription)")
         }
     }
 }
 
-//Update your Sound model to include a file name
-
-struct Sound: Identifiable {
-    let id = UUID()
-    let emoji: String
-    let name: String
-    let file: String   // e.g. "dog"
+// ===== Preview =====
+#Preview {
+    ContentView()
 }
 
-//Example sounds list (match your filenames)
-
-private let sounds: [Sound] = [
-    Sound(emoji: "🐶", name: "Dog", file: "dog"),
-    Sound(emoji: "🐱", name: "Cat", file: "cat"),
-    Sound(emoji: "🚗", name: "Car", file: "car")
-]
-
-//Play sound inside the button tap
-
-Button {
-    lastTapped = "You tapped: \(sound.name) \(sound.emoji)"
-    SoundPlayer.shared.play(fileName: sound.file, fileExtension: "mp3")
-} label: {
-    Text(sound.emoji)
-        .font(.system(size: 56))
-        .frame(maxWidth: .infinity, minHeight: 90)
-        .background(Color(.systemGray6))
-        .cornerRadius(16)
-}
-
-//Result: Tap 🐶 → plays dog.wav, tap 🚗 → plays car.wav, etc.
+// ===== What You've Built =====
+// A COMPLETE, WORKING soundboard with:
+// - A Sound struct to organize data
+// - An array of 9 sounds
+// - ForEach to generate buttons from the array
+// - LazyVGrid for a responsive 3-column layout
+// - Real audio playback with AVAudioPlayer
+// - State management for "Now Playing" feedback
+//
+// ===== The Power of Arrays + ForEach =====
+// BEFORE (Lesson 3):
+//   - 9 separate Button definitions (lots of repetition!)
+//   - 9 separate tap actions (copy-pasted code)
+//   - Hard to add new sounds
+//
+// AFTER (Lesson 4):
+//   - 1 array definition
+//   - 1 Button template in ForEach
+//   - Easy to add sounds: just add to the array!
+//
+// This is a fundamental pattern in app development.
+// Whenever you see repetition, think: "Can I use an array?"
+//
+// ===== How to Use This in Swift Playgrounds =====
+// 1. Copy this entire lesson into Swift Playgrounds
+// 2. Add audio files (dog.mp3, cat.mp3, etc.) to Resources
+// 3. Run the playground
+// 4. Try tapping different sound buttons
+// 5. Experiment: Add more sounds to the array!
+//
+// ===== Try These Challenges =====
+// 1. Add a new sound to the array (pick any emoji and audio file)
+// 2. Change the grid from 3 columns to 2 or 4 columns
+// 3. Modify the button appearance (color, size, etc.)
+// 4. Add an emoji label below each button showing the sound name
+//
+// You've completed the course! Congratulations! 🎉

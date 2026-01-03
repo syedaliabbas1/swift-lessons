@@ -1,89 +1,223 @@
-//Arrays (a list of items)
+// LESSON 3 — Make It Respond (Interactivity with State)
+// Learn: @State, Button, and User Interactions
+// Goal: Make the soundboard respond when you tap the buttons!
 
-var fruits = ["Apple", "Banana", "Cherry"]
-print(fruits)
-print("First fruit:", fruits[0])
-print("Second fruit:", fruits[1])
-print("Third fruit:", fruits[2])
-print("Number of fruits:", fruits.count)
+import SwiftUI
 
+// ===== What is State? =====
+// State is a value that can CHANGE while the app is running.
+// When state changes, SwiftUI automatically updates the screen!
+// We use @State to declare variables that can change.
 
-//Add / remove / change items
-fruits.append("Date")
-print("After adding Date:", fruits)
-fruits.remove(at: 1)  // removes Banana
-print("After removing Banana:", fruits)
-fruits[0] = "Apricot"  // change Apple to Apricot
-print("After changing Apple to Apricot:", fruits)
+struct ContentView: View {
+    // ===== State Variables =====
+    // These variables can change when the user taps buttons
+    // @State tells SwiftUI to watch them and update the screen
 
+    @State var nowPlaying = "—"  // Shows what's currently playing
+    @State var selectedEmoji = ""  // The emoji the user tapped
+    @State var selectedColor = Color(.systemGray5)  // Background color
 
-//Loops (repeat code)
-let colors = ["Red", "Green", "Blue"]
-for color in colors {
-    print("Color:", color)
-}
-//Loop with index
-for number in 1...5 {
-    print("Number:", number)
-}
+    var body: some View {
+        VStack(spacing: 20) {
+            // ===== Title Section =====
+            VStack(spacing: 8) {
+                Text("🎵")
+                    .font(.system(size: 48))
 
-//Using index with loops
-let animals = ["Dog", "Cat", "Rabbit"]
-for index in 0..<animals.count {
-    print("Animal \(index + 1):", animals[index])
-}
+                Text("My Soundboard")
+                    .font(.largeTitle)
+                    .fontWeight(.bold)
 
-//Functions (make your own commands)
-func greeting() {
-    print("Hello! Welcome to Swift programming.")
-}
+                Text("Tap the emoji buttons to play sounds")
+                    .font(.body)
+                    .foregroundColor(.gray)
+            }
+            .padding(.top, 20)
 
-greeting()
-greeting()
+            Spacer()
 
-//Function with an input (parameter)
-func sayHello(to name: String) {
-    print("Hello, \(name)! 👋")
-}
+            // ===== Soundboard Buttons =====
+            VStack(spacing: 12) {
+                // Row 1: Dog, Cat, Lion
+                HStack(spacing: 12) {
+                    // Button 1: Dog
+                    Button(action: {
+                        // This code runs when the user taps the button
+                        selectedEmoji = "🐶"
+                        nowPlaying = "🐶 Dog Bark"
+                        selectedColor = Color(.systemGray4)
+                    }) {
+                        Text("🐶")
+                            .font(.system(size: 44))
+                            .frame(maxWidth: .infinity)
+                            .frame(height: 80)
+                            .background(selectedEmoji == "🐶" ? Color.blue.opacity(0.3) : Color(.systemGray5))
+                            .cornerRadius(12)
+                    }
 
-sayHello(to: "Alice")
-sayHello(to: "Bob")
+                    // Button 2: Cat
+                    Button(action: {
+                        selectedEmoji = "🐱"
+                        nowPlaying = "🐱 Cat Meow"
+                        selectedColor = Color(.systemGray4)
+                    }) {
+                        Text("🐱")
+                            .font(.system(size: 44))
+                            .frame(maxWidth: .infinity)
+                            .frame(height: 80)
+                            .background(selectedEmoji == "🐱" ? Color.blue.opacity(0.3) : Color(.systemGray5))
+                            .cornerRadius(12)
+                    }
 
-//Function that returns a value
-func double(_ number: Int) -> Int {
-    return number * 2
-}
+                    // Button 3: Lion
+                    Button(action: {
+                        selectedEmoji = "🦁"
+                        nowPlaying = "🦁 Lion Roar"
+                        selectedColor = Color(.systemGray4)
+                    }) {
+                        Text("🦁")
+                            .font(.system(size: 44))
+                            .frame(maxWidth: .infinity)
+                            .frame(height: 80)
+                            .background(selectedEmoji == "🦁" ? Color.blue.opacity(0.3) : Color(.systemGray5))
+                            .cornerRadius(12)
+                    }
+                }
 
-let result = double(6)
-print("Double is:", result)
+                // Row 2: Car, Fire Truck, Elephant
+                HStack(spacing: 12) {
+                    // Button 4: Car
+                    Button(action: {
+                        selectedEmoji = "🚗"
+                        nowPlaying = "🚗 Car Horn"
+                        selectedColor = Color(.systemGray4)
+                    }) {
+                        Text("🚗")
+                            .font(.system(size: 44))
+                            .frame(maxWidth: .infinity)
+                            .frame(height: 80)
+                            .background(selectedEmoji == "🚗" ? Color.blue.opacity(0.3) : Color(.systemGray5))
+                            .cornerRadius(12)
+                    }
 
-//Random choice from an array
-let pets = ["Dog 🐶", "Cat 🐱", "Fish 🐟", "Hamster 🐹"]
-let randomPet = pets.randomElement()!
-print("Your random pet is:", randomPet)
+                    // Button 5: Fire Truck
+                    Button(action: {
+                        selectedEmoji = "🚒"
+                        nowPlaying = "🚒 Siren"
+                        selectedColor = Color(.systemGray4)
+                    }) {
+                        Text("🚒")
+                            .font(.system(size: 44))
+                            .frame(maxWidth: .infinity)
+                            .frame(height: 80)
+                            .background(selectedEmoji == "🚒" ? Color.blue.opacity(0.3) : Color(.systemGray5))
+                            .cornerRadius(12)
+                    }
 
-//Mini Project (main): “Classroom Points Tracker”
-var students = ["Anna", "Ben", "Cara", "Sara"]
-var points = [0, 0, 0, 0]
+                    // Button 6: Elephant
+                    Button(action: {
+                        selectedEmoji = "🐘"
+                        nowPlaying = "🐘 Trumpet"
+                        selectedColor = Color(.systemGray4)
+                    }) {
+                        Text("🐘")
+                            .font(.system(size: 44))
+                            .frame(maxWidth: .infinity)
+                            .frame(height: 80)
+                            .background(selectedEmoji == "🐘" ? Color.blue.opacity(0.3) : Color(.systemGray5))
+                            .cornerRadius(12)
+                    }
+                }
 
-func givePoint(to studentName: String) {
-    for i in 0..<students.count {
-        if students[i] == studentName {
-            points[i] += 1
-            print("\(studentName) now has \(points[i]) points ⭐️")
+                // Row 3: Piano, Drums, Pizza
+                HStack(spacing: 12) {
+                    // Button 7: Piano
+                    Button(action: {
+                        selectedEmoji = "🎹"
+                        nowPlaying = "🎹 Piano Note"
+                        selectedColor = Color(.systemGray4)
+                    }) {
+                        Text("🎹")
+                            .font(.system(size: 44))
+                            .frame(maxWidth: .infinity)
+                            .frame(height: 80)
+                            .background(selectedEmoji == "🎹" ? Color.blue.opacity(0.3) : Color(.systemGray5))
+                            .cornerRadius(12)
+                    }
+
+                    // Button 8: Drums
+                    Button(action: {
+                        selectedEmoji = "🥁"
+                        nowPlaying = "🥁 Drum Beat"
+                        selectedColor = Color(.systemGray4)
+                    }) {
+                        Text("🥁")
+                            .font(.system(size: 44))
+                            .frame(maxWidth: .infinity)
+                            .frame(height: 80)
+                            .background(selectedEmoji == "🥁" ? Color.blue.opacity(0.3) : Color(.systemGray5))
+                            .cornerRadius(12)
+                    }
+
+                    // Button 9: Pizza
+                    Button(action: {
+                        selectedEmoji = "🍕"
+                        nowPlaying = "🍕 Chewing"
+                        selectedColor = Color(.systemGray4)
+                    }) {
+                        Text("🍕")
+                            .font(.system(size: 44))
+                            .frame(maxWidth: .infinity)
+                            .frame(height: 80)
+                            .background(selectedEmoji == "🍕" ? Color.blue.opacity(0.3) : Color(.systemGray5))
+                            .cornerRadius(12)
+                    }
+                }
+            }
+            .padding(.horizontal, 12)
+
+            // ===== Now Playing Status =====
+            VStack(spacing: 8) {
+                Text("Now Playing:")
+                    .font(.headline)
+                    .foregroundColor(.gray)
+
+                Text(nowPlaying)
+                    .font(.system(size: 24, weight: .bold))
+                    .foregroundColor(.blue)
+            }
+            .padding(.vertical, 16)
+            .frame(maxWidth: .infinity)
+            .background(Color(.systemGray6))
+            .cornerRadius(12)
+            .padding(.horizontal, 12)
+
+            Spacer()
         }
+        .padding(16)
+        .background(Color(.systemBackground))
+        .ignoresSafeArea(edges: .bottom)
     }
 }
 
-func showLeaderboard() {
-    print("=== LEADERBOARD ===")
-    for i in 0..<students.count {
-        print("\(students[i]): \(points[i])")
-    }
+// ===== Preview =====
+#Preview {
+    ContentView()
 }
 
-givePoint(to: "Anna")
-givePoint(to: "Ben")
-givePoint(to: "Sara")
-
-showLeaderboard()
+// ===== What You've Built =====
+// An INTERACTIVE soundboard where:
+// - Each emoji is now a tappable Button
+// - Tapping a button updates the "Now Playing" text
+// - The selected button highlights in blue
+// - The app REMEMBERS what you tapped using @State
+//
+// How it works:
+// 1. User taps a Button
+// 2. The code inside the Button's action { } runs
+// 3. The @State variables change
+// 4. SwiftUI detects the change and updates the screen
+//
+// Next lesson: We'll remove the repetition using Arrays,
+// and add REAL audio playback!
