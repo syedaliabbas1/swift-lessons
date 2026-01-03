@@ -201,9 +201,15 @@ struct ContentView: View {
     }
 }
 
-// ===== Preview =====
-#Preview {
-    ContentView()
+// ===== App Entry Point =====
+// This makes the app runnable in Swift Playgrounds
+@main
+struct SoundboardApp: App {
+    var body: some Scene {
+        WindowGroup {
+            ContentView()
+        }
+    }
 }
 
 // ===== What You've Built =====
