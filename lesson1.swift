@@ -1,80 +1,118 @@
-// How to print text to the console in Swift
+// LESSON 1 — Sound Data (Console Output)
+// Learn: Variables, Constants, Types, and String Interpolation
+// Goal: Create sound definitions we'll use in the soundboard app later!
 
-print("Hello, Swift! 👋")
-print("My name is John!")
+print("🎵 Welcome to the Soundboard App Tutorial! 🎵")
+print("")
 
-// Variables vs Constants (var vs let)
-var petName = "Milo"   // var can change
-let school = "Harvard"     // let stays the same
+// ===== Part 1: What is a Soundboard? =====
+// A soundboard is an app where you tap buttons to play sounds!
+// First, we'll define our sounds using variables.
 
-print("My pet is \(petName).")
-print("My school is \(school).")
+print("--- Part 1: Your First Sound ---")
+print("")
 
-petName = "Luna"
-print("Now my pet is \(petName).")
+// Create a sound using a VARIABLE (can change)
+var soundName = "Dog Bark"
+var volumeLevel = 7
 
-// Types: String, Int, Double
-let playerName: String = "Alice"
-let age: Int = 11
-let height: Double = 1.42
+print("Sound: \(soundName)")
+print("Volume: \(volumeLevel)")
+print("")
 
-print("Name:", playerName)
-print("Age:", age)
-print("Height:", height)
+// Variables can be changed!
+print("Changing the volume...")
+volumeLevel = 9
+print("Sound: \(soundName)")
+print("Volume: \(volumeLevel)")
+print("")
 
-// Basic Arithmetic
-let a = 8
-let b = 3
+// ===== Part 2: Constants vs Variables =====
 
-print("a + b =", a + b)
-print("a - b =", a - b)
-print("a * b =", a * b)
-print("a / b =", a / b)  // whole number division
+print("--- Part 2: Variables (var) vs Constants (let) ---")
+print("")
 
-//For double division
-let x = 8.0
-let y = 3.0
-print("x / y =", x / y)
+// Use LET for things that never change
+let appName = "My Soundboard"
 
-// Strings + Interpolation (make sentences)
-let name = "Emma"
-let favouriteFood = "pizza 🍕"
-let points = 12
+// Use VAR for things that can change
+var currentSound = "None"
 
-print("Hi, my name is \(name).")
-print("I love \(favouriteFood).")
-print("I have \(points) points!")
+print("App name: \(appName)")  // This never changes
+print("Current sound: \(currentSound)")  // This can change
 
-//Mini game
-var score = 0
-print("Score:", score)
+currentSound = "Dog Bark"
+print("Now playing: \(currentSound)")
+print("")
 
-score = score + 5
-print("Score after bonus:", score)
+// ===== Part 3: Different Data Types =====
 
-score += 2   // short way to add
-print("Score after +2:", score)
+print("--- Part 3: Data Types ---")
+print("")
 
-// Challenge: Create your own variables and print a message
-let userName = "Sara"     
-let userAge = 10          
+// String: text (use quotes)
+let emoji1: String = "🐶"
+let soundFile1: String = "dog.mp3"
 
-print("Welcome \(userName)!")
-print("Next year you will be \(userAge + 1). 🎂")
+// Int: whole numbers
+let duration: Int = 3
 
+// Double: decimal numbers
+let frequency: Double = 440.5
 
-// Mini Player Card
-let player = "Bob"
-let favouriteEmoji = "⚽️"
-var coins = 10
-let bonusCoins = 5
-let level = 2
+print("Emoji: \(emoji1)")
+print("Sound file: \(soundFile1)")
+print("Duration: \(duration) seconds")
+print("Frequency: \(frequency) Hz")
+print("")
 
-coins += bonusCoins
+// ===== Part 4: Create Your Soundboard Data =====
 
-print("----- PLAYER CARD -----")
-print("Name: \(player)")
-print("Favourite: \(favouriteEmoji)")
-print("Level: \(level)")
-print("Coins: \(coins)")
-print("-----------------------")
+print("--- Part 4: Building Soundboard Data ---")
+print("")
+
+// Sound 1: Dog
+var dogName = "Dog"
+var dogEmoji = "🐶"
+var dogVolume = 7
+
+// Sound 2: Cat
+var catName = "Cat"
+var catEmoji = "🐱"
+var catVolume = 5
+
+// Sound 3: Lion
+var lionName = "Lion"
+var lionEmoji = "🦁"
+var lionVolume = 9
+
+print("--- My Soundboard Sounds ---")
+print("")
+print("Sound 1: \(dogEmoji) \(dogName) - Volume \(dogVolume)")
+print("Sound 2: \(catEmoji) \(catName) - Volume \(catVolume)")
+print("Sound 3: \(lionEmoji) \(lionName) - Volume \(lionVolume)")
+print("")
+
+// ===== Part 5: Practice: Print "Now Playing" Messages =====
+
+print("--- Part 5: Now Playing System ---")
+print("")
+
+// Pretend the user tapped the dog button
+print("Tapping \(dogEmoji)...")
+print("Now Playing: \(dogEmoji) \(dogName) at volume \(dogVolume)")
+print("")
+
+// Pretend the user tapped the lion button
+print("Tapping \(lionEmoji)...")
+print("Now Playing: \(lionEmoji) \(lionName) at volume \(lionVolume)")
+print("")
+
+// ===== Challenge Time! =====
+
+print("--- Try This! ---")
+print("")
+print("1. Change dogVolume to 10 and run again")
+print("2. Add a new sound variable for a Cat")
+print("3. Create a 'Now Playing' message for your new sound")
+print("")
