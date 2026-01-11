@@ -1,10 +1,10 @@
-# Swift Lessons — Soundboard App Tutorial
+# Swift Lessons — Music Soundboard App Tutorial
 
-A progressive Swift programming course that teaches Swift and SwiftUI fundamentals by building a complete soundboard application from scratch.
+A progressive Swift programming course that teaches Swift and SwiftUI fundamentals by building a complete music production soundboard application from scratch.
 
 ## Overview
 
-This course provides a hands-on, project-based learning path where students build a functional soundboard app over 4 lessons. Each lesson introduces new Swift and SwiftUI concepts while progressively building toward a complete, working application with real audio playback.
+This course provides a hands-on, project-based learning path where students build a functional music soundboard app over 4 lessons. Designed for complete beginners with no programming experience, each lesson introduces new Swift and SwiftUI concepts while progressively building toward a complete, working application with real audio playback and the ability to play multiple sounds simultaneously to create music.
 
 ## Demo
 
@@ -24,74 +24,71 @@ Each lesson builds directly toward a complete soundboard app:
 
 This repository contains 4 progressive lessons that build a soundboard application:
 
-### Lesson 1: Sound Data (Console Output)
-**Focus:** Swift fundamentals with soundboard-themed data  
-**Students build:** Console-only "sound definitions" they'll reuse later
+### Lesson 1: Your First Program (Console)
+**Focus:** Swift fundamentals for complete beginners  
+**Students build:** A simple program that creates a sound and prints information about it
 
 **Concepts covered:**
-- Variables vs Constants (`var` vs `let`)
-- Data types (`String`, `Int`, `Double`)
-- String interpolation
-- `print()` statements
-- Creating structured data for sounds
+- Creating variables with `var` and constants with `let`
+- Basic types: `String`, `Int`
+- Using `print()` to see results
+- String interpolation (building strings with data)
+- Math operators (`+`, `-`, `*`) to modify values
+- Mini challenge: Create your own sound and change volume
 
 **File:** `lesson1.swift`  
 **Dependencies:** None (console output only)
 
 ### Lesson 2: Build the Screen (Static UI Layout)
-**Focus:** SwiftUI basics and layout fundamentals  
-**Students build:** A static soundboard interface with 9 emoji pads
+**Focus:** App template + layout only (no real logic yet)  
+**Students build:** A static app view with a title and 3 emoji "pads" (🥁, 🎸, ⌨️)
 
 **Concepts covered:**
 - SwiftUI App structure with `@main`
-- `VStack` and `HStack` layouts
-- `Text` views and emoji display
-- `padding()`, `spacing`, and alignment
-- `frame()` and `background()` modifiers
-- Creating a professional-looking UI
+- `VStack` and `HStack` for vertical and horizontal layouts
+- `Text` views with emoji display
+- `padding()` and `spacing` for visual design
+- `frame()`, `background()`, and `cornerRadius()` modifiers
+- Creating a clean, professional interface
 
 **File:** `lesson2.swift`  
-**Dependencies:** None (static UI only)
+**Dependencies:** None (static UI only, no audio)
 
 ### Lesson 3: Make It Respond (Interactivity)
-**Focus:** State management and user interaction  
-**Students build:** Interactive buttons that respond to taps and display "Now Playing" feedback
+**Focus:** Buttons + state so it "works visually"  
+**Students build:** 9 interactive buttons in a 3×3 grid that respond to taps with visual feedback
 
 **Concepts covered:**
-- `@State` property wrapper
-- `Button` views and actions
-- Conditional rendering with `if/else`
+- `@State` property wrapper for remembering values
+- `Button` views with actions
 - Updating UI based on user interaction
-- Visual feedback (highlighting selected buttons)
+- Visual feedback (background color changes)
+- Displaying "Now Playing" text that updates
+- Building repetitive code (sets up the need for arrays in Lesson 4)
 
 **File:** `lesson3.swift`  
-**Dependencies:** None (visual feedback only, no audio)
+**Dependencies:** None (visual feedback only, **no audio yet**)
 
 ### Lesson 4: Capstone Project (Arrays + Real Audio)
-**Focus:** Eliminating code repetition and adding audio playback  
-**Students build:** Complete soundboard with grid layout and working audio
+**Focus:** Remove code repetition using Arrays/ForEach + add audio playback  
+**Students build:** A complete music production soundboard with 9 instruments in a 3×3 grid
 
 **Concepts covered:**
 - Arrays for storing multiple items
-- `struct` for custom data models
-- `Identifiable` protocol
-- `ForEach` for generating views from data
-- `LazyVGrid` for responsive grid layouts
+- `struct` for custom data models (Sound)
+- `Identifiable` protocol for unique items
+- `ForEach` to generate views from data (eliminates repetition!)
+- `LazyVGrid` for responsive 3×3 grid layouts
 - `AVAudioPlayer` for audio playback
-- Resource management in iOS apps
+- **Playing multiple sounds simultaneously** to create music
+- Resource management with `Bundle.main`
+
+**9 Music Instruments:**
+- 🥁 Drums, 🪘 Kick Drum, 🎵 Melody
+- 🎸 Guitar, ⌨️ Synth, 🎹 Piano
+- 🪈 Flute, 🔔 Bell, 🎺 Trumpet
 
 **File:** `lesson4.swift`  
-**Dependencies:** **9 audio files required** (see Audio Files section below)
-
-### Soundboard Project (Complete Application)
-A polished, production-ready version of the soundboard with:
-- Complete `@main` app structure
-- All 9 sound buttons in a responsive grid
-- "Clear" and "Random" control buttons
-- Professional error handling
-- Educational comments explaining design choices
-
-**File:** `soundboard.swift`  
 **Dependencies:** **9 audio files required** (see Audio Files section below)
 
 ## Getting Started
@@ -136,45 +133,46 @@ Each lesson file should be used in its **own separate** Swift Playgrounds docume
    - Observe how `@State` updates the UI
    - **No audio files needed**
 
-5. **Lesson 4 (Complete Soundboard with Audio)**
+5. **Lesson 4 (Complete Music Soundboard with Audio)**
    - Create a **new** Swift Playgrounds document (App)
    - Copy the entire content of `lesson4.swift` into the playground
-   - **Add audio files** (see Audio Files section below)
+   - **Add 9 audio files** to Resources folder (see Audio Files section)
    - Run and tap buttons to hear sounds play
-   - **Requires 9 audio files**
-
-6. **Soundboard Project (Polished Version)**
-   - Create a **new** Swift Playgrounds document (App) or Xcode project
-   - Copy the entire content of `soundboard.swift`
-   - **Add audio files** (see Audio Files section below)
-   - Run to experience the complete app with bonus features
-   - **Requires 9 audio files**
+   - **Try pressing multiple buttons** to play sounds together and create music!
+   - **Requires 9 MP3 files**
 
 ### Audio Files Required
 
-**For Lesson 4 and Soundboard Project only:**
+**For Lesson 4 only:**
 
-You need these 9 MP3 audio files:
-- `dog.mp3` (🐶 Dog bark)
-- `cat.mp3` (🐱 Cat meow)
-- `lion.mp3` (🦁 Lion roar)
-- `car.mp3` (🚗 Car horn)
-- `firetruck.mp3` (🚒 Siren)
-- `elephant.mp3` (🐘 Trumpet)
-- `piano.mp3` (🎹 Piano note)
-- `drums.mp3` (🥁 Drum beat)
-- `pizza.mp3` (🍕 Chewing sound)
+You need these **9 MP3 audio files** placed in the **root directory** of your project (same location as the .swift file):
+
+- `drums.mp3` (🥁 Drums)
+- `kick.mp3` (🪘 Kick Drum)
+- `melody.mp3` (🎵 Melody)
+- `guitar.mp3` (🎸 Guitar)
+- `synth.mp3` (⌨️ Synth)
+- `piano.mp3` (🎹 Piano)
+- `flute.mp3` (🪈 Flute)
+- `bell.mp3` (🔔 Bell)
+- `trumpet.mp3` (🎺 Trumpet)
+
+**Where to get sounds:**
+- Freesound.org (search for instrument names, filter by CC0 license)
+- ZapSplat.com (free for education)
+- BBC Sound Effects Library
+- Keep files short (1-3 seconds) for best experience
 
 **How to add audio files:**
 
 **In Swift Playgrounds:**
 1. Right-click in the file navigator
 2. Select "New Folder" and create a "Resources" folder
-3. Drag and drop your MP3 files into Resources
+3. Drag and drop your 9 MP3 files into Resources
 4. Files will be automatically included in the app bundle
 
 **In Xcode:**
-1. Add MP3 files to your project
+1. Add MP3 files to your project (drag into project navigator)
 2. Ensure they are added to the app target (check Target Membership)
 3. Files should appear in the Copy Bundle Resources build phase
 
@@ -182,11 +180,12 @@ You need these 9 MP3 audio files:
 
 Complete lessons **in order** as each builds on previous concepts:
 
-1. **Lesson 1** (`lesson1.swift`) - Learn Swift fundamentals by creating sound data
-2. **Lesson 2** (`lesson2.swift`) - Build the visual soundboard interface
-3. **Lesson 3** (`lesson3.swift`) - Make buttons interactive with state management
-4. **Lesson 4** (`lesson4.swift`) - Eliminate repetition with arrays and add real audio
-5. **Soundboard** (`soundboard.swift`) - Explore a polished, production-ready version
+1. **Lesson 1** (`lesson1.swift`) - Learn Swift basics: variables, print, math operators
+2. **Lesson 2** (`lesson2.swift`) - Build the visual soundboard with 3 static emojis
+3. **Lesson 3** (`lesson3.swift`) - Add 9 interactive buttons with @State
+4. **Lesson 4** (`lesson4.swift`) - Refactor with arrays and add real audio playback
+
+**Key Teaching Moment:** Students will see the same 9 buttons in Lessons 3 & 4, but Lesson 4 shows how arrays eliminate 90% of the repetitive code!
 
 ## Educational Philosophy
 
@@ -218,14 +217,13 @@ Each lesson includes:
 
 ## Files in This Repository
 
-- `lesson1.swift` - Sound Data (Console, no dependencies)
-- `lesson2.swift` - Build the Screen (UI only, no dependencies)
-- `lesson3.swift` - Make It Respond (Interactive, no dependencies)
-- `lesson4.swift` - Capstone Project (requires audio files)
-- `soundboard.swift` - Complete Application (requires audio files)
-- `plan.txt` - Teaching plan and lesson structure
-- `CLAUDE.md` - Technical documentation for AI assistance
+- `lesson1.swift` - Your First Program (Console, no dependencies)
+- `lesson2.swift` - Build the Screen (3 static emojis, no dependencies)
+- `lesson3.swift` - Make It Respond (9 interactive buttons, no dependencies)
+- `lesson4.swift` - Capstone Project (9 instruments with audio, **requires 9 MP3 files**)
+- `PLAN.MD` - Detailed teaching plan and lesson structure
 - `README.md` - This file
+- **Sound files** (9 MP3 files in root directory, needed for Lesson 4 only)
 
 ## Troubleshooting
 
