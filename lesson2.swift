@@ -3,6 +3,7 @@ import SwiftUI
 struct ContentView: View {
     var body: some View {
         VStack(spacing: 20) {
+            // Title section
             VStack(spacing: 8) {
                 Text("🎵")
                     .font(.system(size: 48))
@@ -11,7 +12,7 @@ struct ContentView: View {
                     .font(.largeTitle)
                     .fontWeight(.bold)
 
-                Text("Tap the emoji buttons to play sounds")
+                Text("Three music sounds")
                     .font(.body)
                     .foregroundColor(.gray)
             }
@@ -19,78 +20,32 @@ struct ContentView: View {
 
             Spacer()
 
-            VStack(spacing: 12) {
-                HStack(spacing: 12) {
-                    Text("🐶")
-                        .font(.system(size: 44))
-                        .frame(maxWidth: .infinity)
-                        .frame(height: 80)
-                        .background(Color(.systemGray5))
-                        .cornerRadius(12)
+            // Music pads
+            HStack(spacing: 12) {
+                Text("🥁")
+                    .font(.system(size: 44))
+                    .frame(maxWidth: .infinity)
+                    .frame(height: 80)
+                    .background(Color(.systemGray5))
+                    .cornerRadius(12)
 
-                    Text("🐱")
-                        .font(.system(size: 44))
-                        .frame(maxWidth: .infinity)
-                        .frame(height: 80)
-                        .background(Color(.systemGray5))
-                        .cornerRadius(12)
+                Text("🎸")
+                    .font(.system(size: 44))
+                    .frame(maxWidth: .infinity)
+                    .frame(height: 80)
+                    .background(Color(.systemGray5))
+                    .cornerRadius(12)
 
-                    Text("🦁")
-                        .font(.system(size: 44))
-                        .frame(maxWidth: .infinity)
-                        .frame(height: 80)
-                        .background(Color(.systemGray5))
-                        .cornerRadius(12)
-                }
-
-                HStack(spacing: 12) {
-                    Text("🚗")
-                        .font(.system(size: 44))
-                        .frame(maxWidth: .infinity)
-                        .frame(height: 80)
-                        .background(Color(.systemGray5))
-                        .cornerRadius(12)
-
-                    Text("🚒")
-                        .font(.system(size: 44))
-                        .frame(maxWidth: .infinity)
-                        .frame(height: 80)
-                        .background(Color(.systemGray5))
-                        .cornerRadius(12)
-
-                    Text("🐘")
-                        .font(.system(size: 44))
-                        .frame(maxWidth: .infinity)
-                        .frame(height: 80)
-                        .background(Color(.systemGray5))
-                        .cornerRadius(12)
-                }
-
-                HStack(spacing: 12) {
-                    Text("🎹")
-                        .font(.system(size: 44))
-                        .frame(maxWidth: .infinity)
-                        .frame(height: 80)
-                        .background(Color(.systemGray5))
-                        .cornerRadius(12)
-
-                    Text("🥁")
-                        .font(.system(size: 44))
-                        .frame(maxWidth: .infinity)
-                        .frame(height: 80)
-                        .background(Color(.systemGray5))
-                        .cornerRadius(12)
-
-                    Text("🍕")
-                        .font(.system(size: 44))
-                        .frame(maxWidth: .infinity)
-                        .frame(height: 80)
-                        .background(Color(.systemGray5))
-                        .cornerRadius(12)
-                }
+                Text("⌨️")
+                    .font(.system(size: 44))
+                    .frame(maxWidth: .infinity)
+                    .frame(height: 80)
+                    .background(Color(.systemGray5))
+                    .cornerRadius(12)
             }
             .padding(.horizontal, 12)
 
+            // Status display
             VStack(spacing: 8) {
                 Text("Now Playing:")
                     .font(.headline)

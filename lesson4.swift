@@ -1,6 +1,7 @@
 import SwiftUI
 import AVFoundation
 
+// Each sound has data: emoji, name, and audio filename
 struct Sound: Identifiable {
     let id = UUID()
     let emoji: String
@@ -10,33 +11,36 @@ struct Sound: Identifiable {
 
 struct ContentView: View {
     @State var nowPlaying = "—"
-    @State var audioPlayer: AVAudioPlayer?
+    @State var audioPlayers: [AVAudioPlayer] = []
 
+    // Array of music production sounds
     let sounds: [Sound] = [
-        Sound(emoji: "🐶", name: "Dog", filename: "dog"),
-        Sound(emoji: "🐱", name: "Cat", filename: "cat"),
-        Sound(emoji: "🦁", name: "Lion", filename: "lion"),
-        Sound(emoji: "🚗", name: "Car", filename: "car"),
-        Sound(emoji: "🚒", name: "Firetruck", filename: "firetruck"),
-        Sound(emoji: "🐘", name: "Elephant", filename: "elephant"),
-        Sound(emoji: "🎹", name: "Piano", filename: "piano"),
         Sound(emoji: "🥁", name: "Drums", filename: "drums"),
-        Sound(emoji: "🍕", name: "Pizza", filename: "pizza"),
+        Sound(emoji: "🪘", name: "Kick Drum", filename: "kick"),
+        Sound(emoji: "🎵", name: "Melody", filename: "melody"),
+        Sound(emoji: "🎸", name: "Guitar", filename: "guitar"),
+        Sound(emoji: "⌨️", name: "Synth", filename: "synth"),
+        Sound(emoji: "🎹", name: "Piano", filename: "piano"),
+        Sound(emoji: "🪈", name: "Flute", filename: "flute"),
+        Sound(emoji: "🔔", name: "Bell", filename: "bell"),
+        Sound(emoji: "🎺", name: "Trumpet", filename: "trumpet"),
     ]
 
+    // Grid layout with 3 columns
     let columns = Array(repeating: GridItem(.flexible(), spacing: 12), count: 3)
 
     var body: some View {
         VStack(spacing: 20) {
+            // Title section
             VStack(spacing: 8) {
                 Text("🎵")
                     .font(.system(size: 48))
 
-                Text("My Soundboard")
+                Text("Music Soundboard")
                     .font(.largeTitle)
                     .fontWeight(.bold)
 
-                Text("Tap the buttons to play sounds!")
+                Text("Create music - tap multiple sounds together!")
                     .font(.body)
                     .foregroundColor(.gray)
             }
@@ -44,6 +48,7 @@ struct ContentView: View {
 
             Spacer()
 
+            // Generate buttons from sounds array
             LazyVGrid(columns: columns, spacing: 12) {
                 ForEach(sounds) { sound in
                     Button(action: {
@@ -61,6 +66,7 @@ struct ContentView: View {
             }
             .padding(.horizontal, 12)
 
+            // Status display
             VStack(spacing: 8) {
                 Text("Now Playing:")
                     .font(.headline)
@@ -83,6 +89,7 @@ struct ContentView: View {
         .ignoresSafeArea(edges: .bottom)
     }
 
+    // Play audio file - multiple sounds can play at once
     func playSound(filename: String) {
         guard let url = Bundle.main.url(forResource: filename, withExtension: "mp3") else {
             print("Sound file not found: \(filename).mp3")
@@ -90,9 +97,10 @@ struct ContentView: View {
         }
 
         do {
-            audioPlayer = try AVAudioPlayer(contentsOf: url)
-            audioPlayer?.prepareToPlay()
-            audioPlayer?.play()
+            let player = try AVAudioPlayer(contentsOf: url)
+            player.prepareToPlay()
+            player.play()
+            audioPlayers.append(player)
         } catch {
             print("Could not play sound: \(error.localizedDescription)")
         }
