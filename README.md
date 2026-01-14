@@ -1,4 +1,4 @@
-# Swift Lessons — Music Soundboard App Tutorial
+# Swift Lessons: Music Soundboard App Tutorial
 
 A progressive Swift programming course that teaches Swift and SwiftUI fundamentals by building a complete music production soundboard application from scratch.
 
